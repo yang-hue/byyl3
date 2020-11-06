@@ -253,10 +253,10 @@ public final class Analyser {
             boolean initialized = false;
 
             // 下个 token 是等于号吗？T如果是的话分析初始化
-            if(nextif(TokenType.Equal)){
+            if(nextIf(TokenType.Equal)){
                 initialized = true;
                 analyseExpression();
-            }
+            }I
 
             // 分析初始化的表达式
 
@@ -440,7 +440,7 @@ public final class Analyser {
         } else if (check(TokenType.Uint)) {
             // 是整数
             // 加载整数值
-            int value = next().getValue();
+            int value = Integer.parseInt(next().getValueString());
             instructions.add(new Instruction(Operation.LIT, value));
         } else if (check(TokenType.LParen)) {
             next();
