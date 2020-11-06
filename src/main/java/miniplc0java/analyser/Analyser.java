@@ -256,7 +256,7 @@ public final class Analyser {
             if(nextIf(TokenType.Equal)){
                 initialized = true;
                 analyseExpression();
-            }I
+            }
 
             // 分析初始化的表达式
 
