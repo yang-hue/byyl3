@@ -57,7 +57,7 @@ public final class Analyser {
      * @return
      * @throws TokenizeError
      */
-    private src.main.java.miniplc0java.tokenizer.Token next() throws TokenizeError {
+    private Token next() throws TokenizeError {
         if (peekedToken != null) {
             var token = peekedToken;
             peekedToken = null;
@@ -247,13 +247,13 @@ public final class Analyser {
             // 变量声明语句 -> 'var' 变量名 ('=' 表达式)? ';'
             
             // 变量名
-            src.main.java.miniplc0java.tokenizer.Token nameToken = expect(TokenType.Ident);
+            Token nameToken = expect(TokenType.Ident);
 
             // 变量初始化了吗
             boolean initialized = false;
 
-            // 下个 token 是等于号吗？如果是的话分析初始化
-            if(nextif(Tokentype.Equal)){
+            // 下个 token 是等于号吗？T如果是的话分析初始化
+            if(nextif(TokenType.Equal)){
                 initialized = true;
                 analyseExpression();
             }
@@ -289,8 +289,8 @@ public final class Analyser {
             else if(peeked.getTokenType() == TokenType.Print) {
                 analyseOutputStatement();
             }
-            else if(peeked.getTokenType() == src.main.java.miniplc0java.tokenizer.TokenType.Semicolon){
-                expect(src.main.java.miniplc0java.tokenizer.TokenType.Semicolon);
+            else if(peeked.getTokenType() == TokenType.Semicolon){
+                expect(TokenType.Semicolon);
             }
             else {
                 // 都不是，摸了
@@ -352,7 +352,7 @@ public final class Analyser {
         // 分析这个语句
 
         // 标识符是什么？
-        src.main.java.miniplc0java.tokenizer.Token token= expect(src.main.java.miniplc0java.tokenizer.TokenType.Ident);
+        Token token= expect(TokenType.Ident);
         String name = token.getValueString();
         var symbol = symbolTable.get(name);
         if (symbol == null) {
@@ -445,7 +445,7 @@ public final class Analyser {
         } else if (check(TokenType.LParen)) {
             next();
             analyseExpression();
-            expect(src.main.java.miniplc0java.tokenizer.TokenType.RParen);
+            expect(TokenType.RParen);
             // 是表达式
             // 调用相应的处理函数
         } else {
