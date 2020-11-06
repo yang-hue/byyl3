@@ -253,7 +253,7 @@ public final class Analyser {
             boolean initialized = false;
 
             // 下个 token 是等于号吗？T如果是的话分析初始化
-            if(nextIf(TokenType.Equal)){
+            if(nextIf(TokenType.Equal)!=null){
                 initialized = true;
                 analyseExpression();
             }
