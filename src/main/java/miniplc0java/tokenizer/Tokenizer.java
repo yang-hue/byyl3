@@ -43,19 +43,19 @@ public class Tokenizer {
         // 请填空：
         // 直到查看下一个字符不是数字为止:
         // -- 前进一个字符，并存储这个字符
-        StringBuffer s = new StringBuffer();
-        Pos spos=it.currentPos();
-        Pos epos=it.nextPos();
-        while(it.peekChar()<='9'&&it.peekChar()>='0'){
-            s.append(it.nextChar());
-        }
-        epos=it.currentPos();
-        return new Token(TokenType.Uint,Integer.parseInt(s.toString()),spos,epos);
         //
         // 解析存储的字符串为无符号整数
         // 解析成功则返回无符号整数类型的token，否则返回编译错误
         //
         // Token 的 Value 应填写数字的值
+        StringBuilder value= new StringBuilder();
+        Pos start=it.currentPos(),end=it.nextPos();
+        while('0'<=it.peekChar()&&it.peekChar()<='9')
+        {
+            value.append(it.nextChar());
+            end=it.currentPos();
+        }
+        return new Token(TokenType.Uint,Integer.parseInt(String.valueOf(value)),start,end);
         //throw new Error("Not implemented");
     }
 
