@@ -75,7 +75,7 @@ public class Tokenizer {
             s.append(it.nextChar());
         }
         epos=it.currentPos();
-        String str=String.valueOf(value);
+        String str=s.toString();
         if(str.equals("begin")){
             return new Token(TokenType.Begin,null,spos,epos);
         }
