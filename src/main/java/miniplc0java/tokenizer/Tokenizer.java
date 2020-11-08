@@ -52,7 +52,7 @@ public class Tokenizer {
         epos=it.currentPos();
         try{
             int value=Integer.parseInt(s.toString());
-            return new Token(TokenType.Uint,String.valueOf(value),spos,epos);
+            return new Token(TokenType.Uint,value,spos,epos);
         }catch(Exception e){
             throw new TokenizeError(ErrorCode.InvalidVariableDeclaration,spos);
         }
