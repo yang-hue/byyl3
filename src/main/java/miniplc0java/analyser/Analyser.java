@@ -340,6 +340,9 @@ public final class Analyser {
 
         // 标识符是什么？
         Token token= expect(TokenType.Ident);
+        expect(TokenType.Equal);
+        analyseExpression();
+        expect(TokenType.Semicolon);
         String name = token.getValueString();
         var symbol = symbolTable.get(name);
         if (symbol == null) {
@@ -381,6 +384,9 @@ public final class Analyser {
             // 预读可能是运算符的 token
             Token op = next();
 
+            if (op.getTokenType() != TokenType.Mult && op.getTokenType() != TokenType.Div) {
+                break;
+            }
             // 运算符
             analyseFactor();
             // 因子
