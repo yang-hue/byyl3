@@ -50,12 +50,7 @@ public class Tokenizer {
             s.append(it.nextChar());
         }
         epos=it.currentPos();
-        try{
-            int value=Integer.parseInt(s.toString());
-            return new Token(TokenType.Uint,value,spos,epos);
-        }catch(Exception e){
-            throw new TokenizeError(ErrorCode.InvalidVariableDeclaration,spos);
-        }
+        return new Token(TokenType.Uint,Integer.parseInt(s.toString()),spos,epos);
         //
         // 解析存储的字符串为无符号整数
         // 解析成功则返回无符号整数类型的token，否则返回编译错误
