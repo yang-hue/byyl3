@@ -45,10 +45,11 @@ public class Tokenizer {
         // -- 前进一个字符，并存储这个字符
         StringBuffer s = new StringBuffer();
         Pos spos=it.currentPos();
+        Pos epos=it.nextPos();
         while(it.peekChar()<='9'&&it.peekChar()>='0'){
             s.append(it.nextChar());
         }
-        Pos epos=it.currentPos();
+        epos=it.currentPos();
         try{
             int value=Integer.parseInt(s.toString());
             return new Token(TokenType.Uint,String.valueOf(value),spos,epos);
@@ -69,24 +70,25 @@ public class Tokenizer {
         // -- 前进一个字符，并存储这个字符
         StringBuffer s = new StringBuffer();
         Pos spos=it.currentPos();
+        Pos epos=it.nextPos();
         while((it.peekChar()<='9'&&it.peekChar()>='0')||(it.peekChar()<='Z'&&it.peekChar()>='A')||(it.peekChar()<='z'&&it.peekChar()>='a')){
             s.append(it.nextChar());
         }
-        Pos epos=it.currentPos();
-        String str=s.toString();
-        if(s.equals("begin")){
+        epos=it.currentPos();
+        String str=String.valueOf(value);
+        if(str.equals("begin")){
             return new Token(TokenType.Begin,null,spos,epos);
         }
-        else if(s.equals("end")){
+        else if(str.equals("end")){
             return new Token(TokenType.End,null,spos,epos);
         }
-        else if(s.equals("var")){
+        else if(str.equals("var")){
             return new Token(TokenType.Var,null,spos,epos);
         }
-        else if(s.equals("const")){
+        else if(str.equals("const")){
             return new Token(TokenType.Const,null,spos,epos);
         }
-        else if(s.equals("print")){
+        else if(str.equals("print")){
             return new Token(TokenType.Print,null,spos,epos);
         }else{
             return new Token(TokenType.Ident,s,spos,epos);
