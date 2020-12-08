@@ -2,39 +2,58 @@ package miniplc0java.tokenizer;
 
 public enum TokenType {
     /** 空 */
-    None,
+    FN_KW,
     /** 无符号整数 */
-    Uint,
+    LET_KW,
     /** 标识符 */
-    Ident,
+    CONST_KW,
     /** Begin */
-    Begin,
+    AS_KW,
     /** End */
-    End,
+    WHILE_KW,
     /** Var */
-    Var,
+    IF_KW,
     /** Const */
-    Const,
+    ELSE_KW,
     /** Print */
-    Print,
+    RETURN_KW,
     /** 加号 */
-    Plus,
+    BREAK_KW,
     /** 减号 */
-    Minus,
+    CONTINUE_KW,
     /** 乘号 */
-    Mult,
+    digit,
     /** 除号 */
-    Div,
+    UINT_LITERAL,
     /** 等号 */
-    Equal,
-    /** 分号 */
-    Semicolon,
-    /** 左括号 */
-    LParen,
+    STRING_LITERAL,
     /** 右括号 */
-    RParen,
+    DOUBLE_LITERAL,
     /** 文件尾 */
-    EOF;
+    char_regular_char,
+    CHAR_LITERAL,
+    IDENT,
+    PLUS,
+    MINUS,
+    MUL,
+    DIV,
+    ASSIGN,
+    EQ,
+    NEQ,
+    LT,
+    GT,
+    LE,
+    GE,
+    L_PAREN,
+    R_PAREN,
+    L_BRACE,
+    R_BRACE,
+    ARROW,
+    COMMA,
+    COLON,
+    SEMICOLON,
+    COMMENT
+    ;
 
     @Override
     public String toString() {
